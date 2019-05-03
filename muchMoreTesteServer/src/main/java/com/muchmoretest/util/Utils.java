@@ -15,9 +15,6 @@ import com.muchmoretest.payload.generico.ApiResponse;
 
 public class Utils {
 	
-	@Value("${api.external.moviedb.url}")
-	private static String apiExternalMovieDbUrl;
-
 	
 	/**
 	 * Método de retorno com ResponseEntity para o tipo created
@@ -81,7 +78,7 @@ public class Utils {
 	 */
 	public static <T> T getExternalService(String url, Class<T> t) {
 		RestTemplate restTemplate = new RestTemplate();
-		return (T) restTemplate.getForObject(apiExternalMovieDbUrl+url,t);
+		return (T) restTemplate.getForObject(AppConstants.API_EXTERNAL_MOVIEDB_URL+url,t);
 		
 	}
 }

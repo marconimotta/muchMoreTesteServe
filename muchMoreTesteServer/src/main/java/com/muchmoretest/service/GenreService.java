@@ -22,7 +22,7 @@ public class GenreService {
 	MovieRepository movieRepository;
 	
 	public void importGenres() {
-		GenreImport genres = Utils.getExternalService("/3/genre/movie/list?api_key=738887c441178634b4f3c49a8b776d16", GenreImport.class);
+		GenreImport genres = Utils.getExternalService("/genre/movie/list?api_key=738887c441178634b4f3c49a8b776d16", GenreImport.class);
 		if(Objects.nonNull(genres) && Objects.nonNull(genres.getResults()) && !genres.getResults().isEmpty()) {
 			genreRepository.deleteAll();
 			genreRepository.saveAll(genres.getResults());

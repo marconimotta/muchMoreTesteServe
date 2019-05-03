@@ -22,7 +22,7 @@ public class ImportMoviesJob {
 	@Scheduled(cron = "0 */2 * ? * *")
 	public void importMovies() {
 		try {
-			MovieImport movies = Utils.getExternalService("/3/movie/now_playing?api_key=738887c441178634b4f3c49a8b776d16", MovieImport.class);
+			MovieImport movies = Utils.getExternalService("/movie/now_playing?api_key=738887c441178634b4f3c49a8b776d16", MovieImport.class);
 			if(Objects.nonNull(movies.getResults()) && movies.getResults().size() > 0) {
 				movieRepository.deleteAll();
 				movieRepository.saveAll(movies.getResults());
